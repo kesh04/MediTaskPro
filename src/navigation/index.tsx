@@ -9,8 +9,15 @@ import { useColorScheme } from "react-native";
 import DashboardScreen from "../screens/DashboardScreen";
 import AddEditTaskScreen from "../screens/AddEditTaskScreen";
 import TaskDetailScreen from "../screens/TaskDetailScreen";
+import { Todo } from "../store/todoSlice";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Dashboard: undefined;
+  AddEditTask: { todo?: Todo };
+  TaskDetail: { todo: Todo };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
   const scheme = useColorScheme();
